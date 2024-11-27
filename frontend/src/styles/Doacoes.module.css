@@ -1,0 +1,263 @@
+body {
+    background-color: #F8F9FA;
+    overflow-y: scroll;
+}
+
+.doacoesDashboardsContainer {
+    margin-left: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.doacoesTopBoardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-top: -20%;
+    margin-left: -30%;
+}
+
+.navListItem {
+    margin-left: -25%;
+    font-size: 14px;
+    color: #686868;
+}
+
+.headerTitleCatastrofes{
+    position: absolute;
+}
+
+.searchInput {
+    position: absolute;
+    width: 200px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    margin-right: 10px;
+    margin-left: 68.5%;
+    margin-top: -6%;
+}
+
+.userVersionButton {
+    width: 180px;
+    height: 36px;
+    border: 2px solid #84DA15;
+    border-radius: 10px;
+    color: #84DA15;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.addButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #84DA15;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+    left:87%;
+}
+
+.imgButtonCatastrofes {
+    width: 30px;
+    height: 30px;
+}
+
+
+.containerDoacoes1 {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+    width: 90%;
+    margin-top: -5%;
+}
+
+.h2Doacoes {
+    font-size: 25px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.doacoesData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #686868;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 6%;
+    font-weight: 600;
+}
+
+.doacoesDataBaseFirst {
+    flex: 2;
+    text-align: left;
+}
+
+.doacoesDataBase {
+    flex: 2;
+    text-align: center;
+}
+
+.doacoesLineCont {
+    background-color: #dfdfdf;
+    height: 1px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Modal Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Window */
+.modal {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modalTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.formGroup {
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    display: block;
+}
+
+.input,.inputSelect, .inputDate {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 10px;
+}
+.inputSelect{
+    width: 105.2%;
+    height: 34px;
+    font-size: 14px;
+    padding: 0;
+    padding-left: 0.5cap;
+}
+.inputDate{
+height: 13px;
+}
+
+.formActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.submitButton {
+    background-color: #84da15;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #72c212;
+}
+
+.closeButton {
+    background-color: #ddd;
+    color: #555;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.closeButton:hover {
+    background-color: #bbb;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.formRow {
+    display: flex;
+    justify-content: space-between; /* Espaçamento entre os itens */
+    gap: 10px; /* Espaçamento horizontal */
+}
+
+.formRow .input {
+    flex: 1; /* Garante que os campos ocupem o mesmo espaço */
+}
+
+.formRow .inputDate {
+    flex: 1;
+}
+
+.doacaoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #686868;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}

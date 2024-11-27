@@ -1,0 +1,243 @@
+.entregasContainer {
+    margin-left: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.entregasTopBoardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.entregasNavList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-top: -20%;
+    margin-left: -30%;
+}
+
+.entregasNavListItem {
+    margin-left: -25%;
+    font-size: 14px;
+    color: #686868;
+}
+
+.entregasHeaderTitle {
+    position: absolute;
+}
+
+.entregasSearchInput {
+    position: absolute;
+    width: 200px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    margin-right: 10px;
+    margin-left: 68.5%;
+    margin-top: -6%;
+}
+
+.entregasAddButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #84DA15;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+    left: 87%;
+}
+
+.entregasImgButton {
+    width: 30px;
+    height: 30px;
+}
+
+.entregasListContainer {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+    width: 90%;
+    margin-top: -5%;
+}
+
+.entregasListTitle {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Cabeçalho da tabela */
+.entregasDataHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #686868;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 6%;
+    font-weight: 700;
+}
+
+/* Estilo para as linhas da lista de cadastro */
+.entregasDataRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Roboto", sans-serif; /* Fonte exclusiva */
+    font-size: 14px;
+    color: #4a4a4a;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+/* Estilo para as colunas */
+.entregasDataColumn {
+    flex: 1;
+    text-align: center;
+}
+
+.entregasDataColumn:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Modal */
+.entregasModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.entregasModalContent {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.entregasModalContent h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+    text-align: center;
+}
+
+.entregasFormGroup {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.entregasFormGroup label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.entregasFormGroup input,
+.entregasFormGroup select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Estilo inline para CPF e Data */
+.entregasInlineGroup {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.entregasFormGroupInline {
+    flex: 1;
+}
+
+.entregasFormGroupInline label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.entregasFormGroupInline input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.entregasModalButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.entregasSaveButton {
+    background-color: #84DA15;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.entregasCancelButton {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.entregasSaveButton:hover,
+.entregasCancelButton:hover {
+    opacity: 0.9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

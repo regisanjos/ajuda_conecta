@@ -1,0 +1,25 @@
+.container {
+    padding: 20px;
+  }
+  
+  .content {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .mapContainer {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima do mapa */
+    margin: 0 auto; /* Centralizar o mapa */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

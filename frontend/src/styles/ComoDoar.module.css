@@ -1,0 +1,228 @@
+/* src/styles/ComoDoar.module.css */
+.comoDoarContainer {
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+.comoDoarImg{
+    width: 300vh;
+    height: 100vh;
+    object-fit: cover; 
+    z-index: -1; 
+    opacity: 0.3;
+    margin-top: -6.5%;
+
+}
+.comoDoarImgContainer{
+    width: 300vh;
+    height: 100vh;
+    object-fit: cover; 
+    z-index: -2; 
+    margin-top: -47.5%;
+    background-color: #0e3305;
+}
+.section {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+.comoDoarImgInfo{
+    color: #fff;
+    position: absolute;
+    margin-top: -35%;
+    margin-left: 42%;
+    font-size: 100px;
+}
+.comoDoarImgInfoP{
+    color: #fff;
+    position: absolute;
+    margin-top: -25%;
+    margin-left: 31%;
+    font-size: 40px;
+    justify-content: center;
+    text-align: center;
+}
+.comoDoarButton{
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #84DA15;
+    border: solid 3px #84DA15;
+    font-size: 16px;
+    position: absolute;
+    margin-top: -15%;
+    margin-left: 35%;
+}
+.acompanharButton{
+    position: absolute;
+    margin-top: -15%;
+    margin-left: 55%;
+    border-radius: 10px;
+    background-color: #84DA15;
+    border: solid 3px #84DA15;
+    font-size: 16px;
+    width: 140px;
+    height: 40px;
+}
+.buttonNav{
+    position: absolute;
+    margin-left: 47%;
+    margin-top: -8%;
+    border-radius: 50%;
+    transform: rotate(90deg);
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    color: #84DA15;
+}
+.h1HowDonate {
+    color: #000;
+    font-family: "SUSE";
+    font-size: 55px;
+    font-weight: 700;
+    letter-spacing:0;
+    margin-left: 2%;
+    margin-bottom: 12%;
+}
+
+.section h2 {
+    font-size: 35px;
+    color: #000;
+    font-weight: bold;
+    margin-top: 2.5%;
+}
+.text{
+    font-size: 14px;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    gap: 80px;
+    margin-top: -10%;
+}
+
+.row div {
+    width: 60%;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.title {
+    color: #84DA15;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    width: 320px;
+}
+.greyContainer{
+    width: 110vh;
+    height: 500px;
+    background-color: #373737;
+    z-index: 2;
+}
+.greenContainer{
+    position: absolute;
+    width: 104vh;
+    height: 50vh;
+    background-color: #84DA15;
+    margin-top: -31%;
+    margin-left: 50%;
+    z-index: -1;
+}
+.cardRow {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.card {
+    background-color: transparent;
+    width: 20%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    height: 220px;
+    margin-left: 5%;
+}
+
+.titleCard{
+    margin-top: 7%;
+    font-size: 20px;
+    font-weight: 500;
+    color: #84DA15;
+}
+.textCard{
+    font-size: 14px;
+}
+.donateButton {
+    background-color: #84DA15;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    width: 200px;
+    height: 45px;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+h4{
+    font-size: 30px;
+}
+.imgFinal{
+    position: absolute;
+    width: 100%;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 18.5%;
+    margin-top: -5%;
+}
+.lastCard{
+    color: #fff;
+}
+.stats div {
+    text-align: center;
+}
+
+.stats h3 {
+    font-size: 32px;
+    margin: 0;
+    color: #333;
+    margin-left: -40%;
+}
+
+.stats p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    margin-left: -30%;
+}
+.footer{
+    height: 100px;
+}

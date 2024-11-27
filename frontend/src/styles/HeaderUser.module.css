@@ -1,0 +1,9 @@
+.headerLogoUser{
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 30px;
+    z-index: 1;
+}

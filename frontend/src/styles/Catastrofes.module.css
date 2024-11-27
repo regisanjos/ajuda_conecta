@@ -1,0 +1,232 @@
+.catastrofesContainer {
+    margin-left: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.topBoardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-top: -20%;
+    margin-left: -30%;
+}
+
+.navListItem {
+    margin-left: -25%;
+    font-size: 14px;
+    color: #686868;
+}
+
+.headerTitleCatastrofes {
+    position: absolute;
+}
+
+.searchInput {
+    position: absolute;
+    width: 200px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    margin-right: 10px;
+    margin-left: 68.5%;
+    margin-top: -6%;
+}
+
+.addButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #84DA15;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+    left: 87%;
+}
+
+.imgButtonCatastrofes {
+    width: 30px;
+    height: 30px;
+}
+
+.listContainer {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+    width: 90%;
+    margin-top: -5%;
+}
+
+.listTitle {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Cabeçalho da tabela */
+.dataHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #686868;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 6%;
+    font-weight: 700;
+}
+
+/* Estilo para as linhas da lista de catástrofes */
+.dataRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Roboto", sans-serif; /* Fonte exclusiva para a lista */
+    font-size: 14px;
+    color: #4a4a4a;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    font-weight: 500;
+}
+
+/* Estilo para as colunas */
+.dataColumn {
+    flex: 1;
+    text-align: center;
+}
+
+.dataColumn:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modalTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input,
+.inputSelect,
+.inputDate {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 10px;
+    margin-bottom: 6px;
+}
+
+.inputSelect {
+    width: 105.2%;
+    height: 34px;
+    font-size: 14px;
+    padding: 0;
+    padding-left: 0.5em;
+}
+
+.inputDate {
+    height: 13px;
+}
+
+.formActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.submitButton {
+    background-color: #84da15;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+    background-color: #72c212;
+}
+
+.closeButton {
+    background-color: #ddd;
+    color: #555;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.closeButton:hover {
+    background-color: #bbb;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
