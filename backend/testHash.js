@@ -1,16 +1,8 @@
-const bcrypt = require('bcrypt'); // ou 'bcryptjs'
+const bcrypt = require('bcrypt');
 
-const plainPassword = 'Password123';
+const password = 'Test1234';
+const hash = '$2b$10$l/AEQYT4QDP1mzqlFLEqJ.YErz1rDAl7ceusldn9SwM2vPIHT9CPm'; // Substitua pelo hash atualizado no banco
 
-(async () => {
-  try {
-    const saltRounds = 10;
-    const newHash = await bcrypt.hash(plainPassword, saltRounds);
-    console.log('Novo hash gerado:', newHash);
-
-    const isValid = await bcrypt.compare(plainPassword, newHash);
-    console.log('Senha válida com novo hash?', isValid);
-  } catch (err) {
-    console.error('Erro ao gerar ou validar hash:', err.message);
-  }
-})();
+bcrypt.compare(password, hash).then((result) => {
+  console.log('Senha válida?', result); // Deve imprimir "true"
+});
