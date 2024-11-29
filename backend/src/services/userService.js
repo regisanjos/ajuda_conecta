@@ -1,5 +1,5 @@
 const prisma = require('../config/db');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const AppError = require('../utils/AppError');
 

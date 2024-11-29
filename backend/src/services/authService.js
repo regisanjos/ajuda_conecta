@@ -1,69 +1,92 @@
-const bcrypt = require('bcryptjs');
 const prisma = require('../config/db');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+const AppError = require('../utils/AppError');
 
 const authService = {
-  // Método para verificar se o e-mail já está em uso
+  /**
+   * Busca um usuário pelo email.
+   * @param {string} email - Email do usuário.
+   * @returns {object} Usuário encontrado ou null.
+   */
   async findUserByEmail(email) {
-    const user = await prisma.user.findUnique({
-      where: { email },
-    });
-    return user;
-  },
-
-  // Método para criar um novo usuário
-  async createUser(userData) {
     try {
-      // Verificar se o e-mail já está em uso
-      const existingUser = await this.findUserByEmail(userData.email);
-      if (existingUser) {
-        throw new Error('Email já está em uso.');
-      }
-
-      // Criptografar a senha antes de salvar no banco
-      const hashedPassword = await bcrypt.hash(userData.password, 10);
-
-      // Criando o usuário no banco de dados
-      const user = await prisma.user.create({
-        data: {
-          email: userData.email,
-          password: hashedPassword,  // Usar a senha criptografada
-          name: userData.name,
-          role: userData.role,
-        },
+      return await prisma.user.findUnique({
+        where: { email },
       });
-
-      console.log('Usuário criado com sucesso:', user);
-      return user;
     } catch (error) {
-      console.error("Erro ao criar usuário:", error);
-      throw new Error('Erro ao criar usuário. Verifique os dados e tente novamente.');
+      console.error('Erro ao buscar usuário por email:', error.message);
+      throw new AppError('Erro ao buscar usuário.', 500);
     }
   },
 
-  // Método para autenticar um usuário
+  /**
+   * Autentica um usuário.
+   * @param {string} email - Email do usuário.
+   * @param {string} password - Senha do usuário.
+   * @returns {object} Token JWT e dados do usuário autenticado.
+   */
   async authenticateUser(email, password) {
+    if (!email || !password) {
+      throw new AppError('Email e senha são obrigatórios.', 400);
+    }
+
+    const user = await this.findUserByEmail(email);
+
+    if (!user) {
+      throw new AppError('Credenciais inválidas.', 401);
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      throw new AppError('Credenciais inválidas.', 401);
+    }
+
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      config.jwt.secret,
+      { expiresIn: config.jwt.expiration }
+    );
+
+    return {
+      token,
+      user: { id: user.id, email: user.email, name: user.name, role: user.role },
+    };
+  },
+
+  /**
+   * Cria um novo usuário.
+   * @param {object} userData - Dados do usuário.
+   * @returns {object} Dados do usuário criado.
+   */
+  async createUser(userData) {
+    if (!userData.email || !userData.password || !userData.name) {
+      throw new AppError('Nome, email e senha são obrigatórios.', 400);
+    }
+
+    const existingUser = await this.findUserByEmail(userData.email);
+    if (existingUser) {
+      throw new AppError('Email já está em uso.', 409);
+    }
+
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
+
     try {
-      // Buscar o usuário pelo e-mail
-      const user = await prisma.user.findUnique({
-        where: { email },
+      const user = await prisma.user.create({
+        data: { ...userData, password: hashedPassword },
       });
 
-      // Verificar se o usuário existe
-      if (!user) {
-        throw new Error('Credenciais inválidas.');
-      }
-
-      // Comparar a senha fornecida com a armazenada no banco
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        throw new Error('Credenciais inválidas.');
-      }
-
-      console.log('Autenticação bem-sucedida para:', user);
-      return user;
+      return {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      };
     } catch (error) {
-      console.error("Erro ao autenticar usuário:", error);
-      throw new Error('Erro ao autenticar. Verifique as credenciais e tente novamente.');
+      console.error('Erro ao criar usuário:', error.message);
+      throw new AppError('Erro ao criar usuário.', 500);
     }
   },
 };
