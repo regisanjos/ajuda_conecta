@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/ComoDoar.module.css';
+import scripts from '../scripts/scrollButton';
 
 function ComoDoar() {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ function ComoDoar() {
                 Acompanhar
             </button>
 
-            <button className={styles.buttonNav}></button>
+            <button id='scrollButton' className={styles.buttonNav}></button>
             <div className={styles.section}>
                 <h1 className={styles.h1HowDonate}>POR QUE DOAR?</h1>
                 <div className={styles.row}>
@@ -51,20 +52,36 @@ function ComoDoar() {
                     </div>
                 </div>
             </div>
-            <div className={styles.greyContainer}></div>
+            <div className={styles.greyContainer}>
+            <h1 className={styles.h1GreyTitle}>SUA SEGURANÇA</h1>
+            <div className={styles.imgsContainers}>
+            <img className={styles.triagem}src='/img/Successful Delivery.png'></img>
+            <img className={styles.triagem}src='/img/Split Files.png'></img>
+            <img className={styles.triagem}src='/img/Warehouse.png'></img>
+            <img className={styles.triagem}src='/img/DeliveryGreen.png'></img>
+            <img className={styles.triagem}src='/img/Full Family.png'></img>
+            <div className={styles.dotLine1}></div>
+            <div className={styles.dotLine2}></div>
+            <div className={styles.dotLine3}></div>
+            <div className={styles.dotLine4}></div>
+            </div>
+            <p className={styles.pGreyTitle}>Nosso site oferece a transparência que você merece para acompanhar cada etapa da sua doação.
+            Com o código de rastreio fornecido, você pode monitorar todo o trajeto da sua contribuição, desde a entrega inicial até o destino final. Assim, garantimos que sua ajuda chegue a quem mais precisa, com segurança e confiança.</p>
+            </div>
             <div className={styles.greenContainer}></div>
+            <img className={styles.imgGreenContainer} src=''></img>
             <div className={styles.section}>
                 <h2>O caminho da sua doação</h2>
                 <div className={styles.cardRow}>
                     <div className={styles.card}>
-                        <img className={styles.Icon1} src='/img/User.svg' alt="Ícone Usuário"></img>
-                        <p className={styles.titleCard}>CRIE SUA CONTA</p>
-                        <p className={styles.textCard}>Comece criando uma conta para acompanhar suas doações e ver seu impacto.</p>
+                        <img className={styles.Icon1} src='/img/GreyMap.png' alt="Ícone Usuário"></img>
+                        <p className={styles.titleCard}>BUSQUE</p>
+                        <p className={styles.textCard}>Comece buscando um ponto de coleta já cadastrado em nosso mapa.</p>
                     </div>
                     <div className={styles.card}>
                         <img className={styles.Icon1} src='/img/Charity.svg' alt="Ícone Doação"></img>
                         <p className={styles.titleCard}>DOE</p>
-                        <p className={styles.textCard}>Selecione o que deseja doar e insira as informações da sua doação.</p>
+                        <p className={styles.textCard}>Selecione o que deseja doar e separe para a entrega física.</p>
                     </div>
                     <div className={styles.card}>
                     <img className={styles.Icon1} src='/img/Open Parcel.svg' alt="Ícone Entrega"></img>
@@ -79,8 +96,8 @@ function ComoDoar() {
                 </div>
             </div>
 
-            <div className={styles.section} style={{ backgroundColor: '#373737', color: 'white' }}>
-                <img className={styles.imgFinal} src='#' alt="Imagem Final"></img>
+            <div className={styles.sectionFinal}>
+                <div className={styles.colorFinal}></div>
                 <h4>SEJA UM DOADOR</h4>
                 <p>Milhares de famílias podem estar esperando sua ajuda</p>
                 <button className={styles.donateButton} onClick={() => navigate('/login')}>
@@ -104,6 +121,7 @@ function ComoDoar() {
                 </div>
             <div className={styles.footer}></div>
         </div>
+      
     );
 }
 

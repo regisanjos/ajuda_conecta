@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from '../styles/Home.module.css';
@@ -7,8 +6,7 @@ function Header() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Exibe o cabeçalho apenas nas rotas '/', '/como-doar' e '/contate'
-    const allowedRoutes = ['/', '/como-doar', '/contate', 'doar-user', 'acompanhar-user'];
+    const allowedRoutes = ['/', '/como-doar', '/contate', '/como-coletar'];
     if (!allowedRoutes.includes(location.pathname)) {
         return null;
     }
@@ -19,18 +17,9 @@ function Header() {
             <img className={styles.imgLogo} src="/img/Group.png" alt="Logo" />
             <nav>
                 <ul>
-                    <li><Link to="/como-doar">ESPAÇO DOADOR</Link></li>
-                    <li><Link to="/contate">ESPAÇO ? </Link></li>
-                    <li><Link to="/contate">CONTATE </Link></li>
-                    <li>
-                    <button 
-                            id="loginButton" 
-                            className={styles.loginButton} 
-                            onClick={() => navigate('/login')}
-                        >
-                            ENTRAR
-                        </button>
-                    </li>
+                    <li><Link to="/como-doar">ESPAÇO DOE</Link></li>
+                    <li><Link to="/como-coletar">ESPAÇO COLETA</Link></li>
+                    <li><Link to="/contate">CONTATE</Link></li>
                 </ul>
             </nav>
             <div className={styles.line}></div>

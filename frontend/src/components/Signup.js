@@ -57,7 +57,16 @@ function Signup({ onSignupSuccess }) {
                     required 
                     className={styles.inputName} 
                 />
-                
+                                     <label className={styles.label4} for='cpf'>CNPJ</label>
+                    <input 
+                        type="text" 
+                        placeholder="CNPJ" 
+                        value={cpf}
+                        onChange={handleCpfChange}
+                        required 
+                        className={styles.cpfInput} 
+                        maxLength="14"
+                    />
                 <div className={styles.doubleInput}>
                     <label className={styles.label2} for='email'>E-mail</label>
                     <input 
@@ -77,39 +86,6 @@ function Signup({ onSignupSuccess }) {
                         required 
                         className={styles.inputPassword} 
                     />
-                </div>
-                
-                <div className={styles.doubleInput}>
-                    <label className={styles.label4} for='cpf'>CPF</label>
-                    <input 
-                        type="text" 
-                        placeholder="CPF" 
-                        value={cpf}
-                        onChange={handleCpfChange}
-                        required 
-                        className={styles.cpfInput} 
-                        maxLength="14"
-                    />
-                    <div>
-                        <label className={styles.label5} for='date'>Data de Nascimento</label>
-                        <input 
-                            type="date" 
-                            value={birthDate}
-                            onChange={(e) => setBirthDate(e.target.value)}
-                            required 
-                            className={styles.inputDate} 
-                        />
-                    </div>
-                </div>
-                <div>
-                    <label className={styles.label6}for='sex'>Sexo</label>
-                    <select className={styles.selectSex}>
-                        <option>Selecione</option>
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                        <option>Transgênero</option>
-                        <option>Prefiro não Inoformar</option>
-                    </select>
                 </div>
                 
                 <div className={styles.doubleInput}>

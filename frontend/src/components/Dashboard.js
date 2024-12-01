@@ -17,7 +17,7 @@ import {
 import styles from '../styles/Dashboard.module.css';
 
 // Importação dos componentes das páginas
-import User from './User';
+import User from './PontosColeta';
 import Catastrofes from './Catastrofes';
 import Doacoes from './Doacoes';
 import Entregas from './Entregas';
@@ -261,15 +261,15 @@ function Dashboard() {
                     <>
                         <div className={styles['dashboard-topBoardContainer']}>
                             <nav className={styles['dashboard-navContainer']}>
-                                <ul className={styles['dashboard-navList']}>
-                                    <li className={styles['dashboard-navItem1']}><a href="#" className={styles['dashboard-navLink']}>Admin/</a></li>
-                                    <li className={styles['dashboard-navItem2']}><strong><a href="#" className={styles['dashboard-navLink']}>Dashboards</a></strong></li>
-                                </ul>
+                                <div className={styles['dashboard-navList']}>
+                                    <p className={styles['dashboard-navItem1']}><a className={styles['dashboard-navLink']}>Admin/</a></p>
+                                    <p className={styles['dashboard-navItem2']}><strong><a className={styles['dashboard-navLink']}>Dashboards</a></strong></p>
+                                </div>
                             </nav>
                             <h1 className={styles['dashboard-title']}>Dashboards</h1>
                         </div>
                         <input type="text" placeholder="Pesquise aqui" className={styles['dashboard-searchInput']} />
-                        <button className={styles['dashboard-button']}>VERSÃO USUÁRIO</button>
+                        <button className={styles['dashboard-button']}>MAPA USUÁRIO</button>
 
                         <div className={styles['dashboard-donationTodayContainer']}>
                             <p className={styles['dashboard-todayLabel']}>Doações Hoje</p>
@@ -279,7 +279,7 @@ function Dashboard() {
                             </div>
                         </div>
                         <div className={styles['dashboard-usersTodayContainer']}>
-                            <p className={styles['dashboard-todayLabel']}>Usuários Hoje</p>
+                            <p className={styles['dashboard-todayLabel']}>Pontos Hoje</p>
                             <div className={styles['dashboard-todayContainer']}>
                                 <img className={styles['dashboard-today']} src="../img/User-nav.svg" alt="Usuários Hoje" />
                                 <h3 className={styles['dashboard-todayText']}>0</h3>
@@ -498,7 +498,9 @@ function Dashboard() {
         <div className={styles['dashboard-container']}>
             {/* Barra lateral */}
             <div className={styles['dashboard-navBarContainer']}>
-                <div className={styles['dashboard-logo']}></div>
+                <div className={styles['dashboard-logo']}>
+                    <img className={styles.dashboardLogoImg} src='img/Group.png'></img>
+                </div>
                 <div className={styles['dashboard-dashboardLine']}></div>
 
                 <div

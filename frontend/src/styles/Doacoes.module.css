@@ -1,61 +1,67 @@
-body {
-    background-color: #F8F9FA;
-    overflow-y: scroll;
-}
+/* src/styles/Doacoes.module.css */
 
-.doacoesDashboardsContainer {
-    margin-left: 20px;
+.doacoesContainer {
+    margin: 20px;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
 }
 
 .doacoesTopBoardContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: -20px;
 }
 
 .navList {
     list-style: none;
     display: flex;
     padding: 0;
-    margin-top: -20%;
-    margin-left: -30%;
+    margin-top: -5%;
 }
 
 .navListItem {
-    margin-left: -25%;
+    margin-right: 5px;
     font-size: 14px;
     color: #686868;
 }
 
-.headerTitleCatastrofes{
+.navListItem::after {
+    content: '/';
+    margin-left: 5px;
+}
+
+.navListItem:last-child::after {
+    content: '';
+}
+
+.headerTitleDoacoes {
     position: absolute;
+    margin-top: 5%;
+}
+
+.searchAndAddContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .searchInput {
     position: absolute;
-    width: 200px;
+    width: 300px;
     height: 36px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid #ddd;
     padding: 0 10px;
     margin-right: 10px;
-    margin-left: 68.5%;
-    margin-top: -6%;
+    margin-left: 61%;
+    margin-top: 0px;
 }
 
-.userVersionButton {
-    width: 180px;
-    height: 36px;
-    border: 2px solid #84DA15;
-    border-radius: 10px;
-    color: #84DA15;
-    background-color: transparent;
-    font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
+.searchInput:focus {
+    border-color: #84DA15;
 }
 
 .addButton {
@@ -63,70 +69,123 @@ body {
     height: 50px;
     border-radius: 50%;
     border: 2px solid #84DA15;
-    background-color: transparent;
+    background-color: #84DA15;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     position: relative;
-    top: 20px;
-    left:87%;
+    top: 120px;
+    left: 87%;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.imgButtonCatastrofes {
-    width: 30px;
-    height: 30px;
+.addButton:hover {
+    background-color: #72c30b;
+    border-color: #72c30b;
 }
 
-
-.containerDoacoes1 {
+.containerDoacoes {
     background-color: #ffffff;
     border-radius: 15px;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 30px;
-    width: 90%;
-    margin-top: -5%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 95%;
+    max-width: 1200px;
+    margin-left: 0%;
+    margin-top: 5%;
 }
 
-.h2Doacoes {
-    font-size: 25px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 20px;
+.doacoesListTitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align:left;
 }
 
-.doacoesData {
+.doacoesDataHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
     color: #686868;
+    border-bottom: 2px solid #84DA15;
+    padding: 12px 0;
+    font-weight: 700;
+    background-color: #f1f1f1;
+}
+
+.doacoesDataRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
     border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-    margin-top: 6%;
-    font-weight: 600;
+    padding: 12px 0;
+    transition: background-color 0.3s;
 }
 
-.doacoesDataBaseFirst {
-    flex: 2;
-    text-align: left;
+.doacoesDataRow:hover {
+    background-color: #f9f9f9;
 }
 
-.doacoesDataBase {
-    flex: 2;
+.doacoesDataColumn {
+    flex: 1;
     text-align: center;
+    padding: 0 10px;
+    word-wrap: break-word;
 }
 
-.doacoesLineCont {
-    background-color: #dfdfdf;
-    height: 1px;
-    width: 100%;
-    margin-top: 10px;
+.doacoesDataColumn:first-child {
+    text-align: left;
+    font-weight: 600;
+    flex: 2;
 }
 
-/* Modal Overlay */
-.overlay {
+/* Botões de Ação */
+.doacoesActionButtons {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    gap: 5px; /* Espaçamento entre os botões */
+    align-items: center;
+}
+
+.editButton,
+.deleteButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100px;
+    padding: 8px 0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.editButton {
+    background-color: #4caf50;
+}
+
+.editButton:hover {
+    background-color: #45a049;
+}
+
+.deleteButton {
+    background-color: #f44336;
+}
+
+.deleteButton:hover {
+    background-color: #d32f2f;
+}
+
+/* Modal */
+.modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -139,125 +198,196 @@ body {
     z-index: 1000;
 }
 
-/* Modal Window */
-.modal {
+.modalContent {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 30px;
-    width: 400px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
     animation: fadeIn 0.3s ease-out;
 }
 
 .modalTitle {
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 20px;
+    font-size: 22px;
     color: #333;
     text-align: center;
 }
 
-
-.form {
-    display: flex;
-    flex-direction: column;
-    
-}
-
 .formGroup {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
+.formGroup label {
     display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
 }
 
-.input,.inputSelect, .inputDate {
+.input,
+.inputSelect,
+.inputDate {
     width: 100%;
     padding: 10px;
+    padding-top: 0.65cap;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    height: 10px;
-}
-.inputSelect{
-    width: 105.2%;
-    height: 34px;
+    border-radius: 8px;
     font-size: 14px;
-    padding: 0;
-    padding-left: 0.5cap;
-}
-.inputDate{
-height: 13px;
+    outline: none;
+    transition: border-color 0.3s;
+    height: 34px;
 }
 
-.formActions {
+.input:focus,
+.inputSelect:focus,
+.inputDate:focus {
+    border-color: #84DA15;
+}
+
+/* Estilo inline para CPF e Data */
+.formRow {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
+}
+
+.formRow .formGroup {
+    flex: 1;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
     margin-top: 20px;
 }
 
 .submitButton {
-    background-color: #84da15;
-    color: white;
-    padding: 10px 20px;
+    background-color: #84DA15;
+    color: #fff;
+    padding: 10px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .submitButton:hover {
-    background-color: #72c212;
+    background-color: #72c30b;
 }
 
 .closeButton {
-    background-color: #ddd;
-    color: #555;
-    padding: 10px 20px;
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight:500;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
 .closeButton:hover {
-    background-color: #bbb;
+    background-color: #d32f2f;
+}
+
+/* Mensagens */
+.successMessage {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.errorMessage {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.75);
     }
     to {
         opacity: 1;
-        transform: scale(1);
     }
 }
 
-.formRow {
-    display: flex;
-    justify-content: space-between; /* Espaçamento entre os itens */
-    gap: 10px; /* Espaçamento horizontal */
-}
+/* Responsividade */
+@media (max-width: 768px) {
+    .doacoesTopBoardContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navList {
+        margin-top: 10px;
+        margin-left: 0;
+    }
 
-.formRow .input {
-    flex: 1; /* Garante que os campos ocupem o mesmo espaço */
-}
+    .searchAndAddContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 
-.formRow .inputDate {
-    flex: 1;
-}
+    .searchInput {
+        width: 100%;
+    }
 
-.doacaoItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    color: #686868;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    .addButton {
+        align-self: flex-end;
+    }
+
+    .formRow {
+        flex-direction: column;
+    }
+
+    .doacoesDataHeader,
+    .doacoesDataRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .doacoesDataColumn {
+        text-align: left;
+        padding: 5px 0;
+    }
+
+    .doacoesDataColumn:first-child {
+        font-weight: 600;
+    }
+
+    .doacoesActionButtons {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    .editButton,
+    .deleteButton {
+        width: auto;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
 }

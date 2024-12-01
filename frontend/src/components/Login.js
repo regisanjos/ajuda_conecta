@@ -32,7 +32,7 @@ function Login() {
                 result = await signInWithEmailAndPassword(auth, email, password);
             }
             alert(`Logado com ${provider}: ${result.user.displayName || result.user.email}`);
-            navigate('/usermenu'); // Redireciona para o UserMenu após o login
+            navigate('/dashboard'); // Redireciona para o UserMenu após o login
         } catch (error) {
             alert(`Erro ao autenticar com ${provider}: ${error.message}`);
             setError('Erro ao fazer login. Verifique suas credenciais.');
@@ -45,11 +45,8 @@ function Login() {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Verifica se o login é com o e-mail do admin
-            if (email === 'admin@gmail.com' && password === 'admin123') {
-                navigate('/dashboard'); // Redireciona para o Dashboard se for admin
-            } else {
-                navigate('/usermenu'); // Redireciona para o UserMenu se não for admin
+            {
+                navigate('/dashboard'); // Redireciona para o UserMenu se não for admin
             }
         } catch (error) {
             setError('Erro ao fazer login. Verifique suas credenciais.');
@@ -65,7 +62,9 @@ function Login() {
         <div className={styles.container}>
             <div className={styles.left}>
                 <div className={styles.logo}>
-                    <div className={styles.circle}></div>
+                    <div className={styles.circle}>
+                        <img className={styles.imgLogoLogin} src='/img/GroupGreen.png'></img>
+                    </div>
                     <span>AJUDA</span>
                     <span className={styles.subtext}>CONECTA</span>
                 </div>

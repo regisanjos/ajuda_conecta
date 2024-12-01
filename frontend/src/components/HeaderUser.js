@@ -16,14 +16,12 @@ function HeaderUser() {
     return (
         <header>
         <div className={styles.headerLogoUser}></div>
-        <img className={styles.imgLogoUser} src="/img/Group.png" alt="Logo" />
+        <img className={styles.imgLogoUser} src="/img/GroupGreen.png" alt="Logo" />
         <nav>
             <ul>
-                <li><Link to="/como-doar">HOME</Link></li>
-                <li><Link to="/contate">DOAR </Link></li>
-                <li><Link to="/contate">ACOMPANHAR </Link></li>
-                <li>
-                </li>
+                <li><Link to="/">HOME</Link></li>
+                <li className={styles.liSecond}><Link to="/doar-user">DOAR </Link></li>
+                <li><Link to="/acompanhar-user">ACOMPANHAR </Link></li>
             </ul>
         </nav>
         <div className={styles.line}></div>

@@ -5,25 +5,24 @@ import styles from '../styles/Home.module.css';
 function Home() {
     const navigate = useNavigate();
 
-    const handleLoginClick = () => {
-        navigate('/login');
+    const handleHowDonateClick = () => {
+        navigate('/como-doar');
     };
 
-    const handleHowDonateClick = () => {
-        navigate('/como-doar'); // Navega para a rota "como-doar"
+    const handleHowCollectClick = () => {
+        navigate('/como-coletar');
     };
 
     const handleLogoClick = () => {
-        navigate('/'); // Navega para a página inicial
+        navigate('/');
     };
 
     return (
-        
         <div className={styles.bodyColor}>
             <main>
-                <div className={styles.logo} onClick={handleLogoClick}> {/* Adiciona o evento de clique */}
+                <div className={styles.logo} onClick={handleLogoClick}>
                     <div className={styles.circle}></div>
-                    <img className={styles.imgHome} src='/img/Home Page PHOTO.svg'></img>
+                    <img className={styles.imgHome} src='/img/Home Page PHOTO.svg' alt="Home" />
                     <div className={styles.colorBody}></div>
                 </div>
                 <h1 className={styles.h1Home}>AJUDACONECTA</h1>
@@ -32,19 +31,19 @@ function Home() {
                     Seu gesto pode fazer a diferença na reconstrução de vidas e na 
                     recuperação de áreas devastadas, promovendo a união em tempos de crise.
                 </p>
-                <button 
-                    id="howDonate" 
-                    className={styles.donationButton} 
-                    onClick={handleHowDonateClick} // Adiciona o evento de clique
+                <button
+                    id="howDonate"
+                    className={styles.donationButton}
+                    onClick={handleHowDonateClick}
                 >
                     Veja como Doar
                 </button>
-                <button 
-                    id="howDonate" 
-                    className={styles.donationButton} 
-                    onClick={handleHowDonateClick} // Adiciona o evento de clique
+                <button
+                    id="howCollect"
+                    className={styles.donationButton}
+                    onClick={handleHowCollectClick}
                 >
-                    ?
+                    Veja como Coletar
                 </button>
             </main>
         </div>
