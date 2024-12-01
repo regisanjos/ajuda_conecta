@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from "../styles/ComoColetar.module.css";
+import styles from "../styles/comoColetar.module.css";
 
 function ComoColetar() {
     return (
