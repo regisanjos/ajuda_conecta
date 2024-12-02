@@ -71,10 +71,6 @@ function Entregas() {
     const cepDoadorTrimmed = novaEntrega.cepDoador.trim();
     const cepDestinatarioTrimmed = novaEntrega.cepDestinatario.trim();
 
-    console.log("CPF:", novaEntrega.cpf);
-    console.log("CEP Doador Trimmed:", cepDoadorTrimmed);
-    console.log("CEP Destinatário Trimmed:", cepDestinatarioTrimmed);
-
     if (!cpfRegex.test(novaEntrega.cpf)) {
       setErrorMessage('CPF inválido.');
       setSuccessMessage('');
@@ -146,7 +142,6 @@ function Entregas() {
 
   return (
     <div className={styles.entregasContainer}>
-      {/* Mensagens de Sucesso e Erro */}
       {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 
@@ -172,7 +167,6 @@ function Entregas() {
         </button>
       </div>
 
-      {/* Lista de Entregas */}
       <div className={styles.entregasListContainer}>
         <h2 className={styles.entregasListTitle}>Lista de Entregas</h2>
         <div className={styles.entregasDataHeader}>
@@ -211,7 +205,6 @@ function Entregas() {
         ))}
       </div>
 
-      {/* Modal de Cadastro e Edição */}
       {isRegistering && (
         <div className={styles.entregasModal}>
           <div className={styles.entregasModalContent}>
@@ -332,7 +325,6 @@ function Entregas() {
         </div>
       )}
 
-      {/* Modal de Confirmação de Exclusão */}
       {isConfirmModalOpen && entregaParaDeletar && (
         <div className={styles.entregasModal}>
           <div className={styles.entregasModalContent}>

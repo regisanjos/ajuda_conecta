@@ -12,16 +12,12 @@ const firebaseConfig = {
   measurementId: "G-3X8YPDDFSC"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// Inicializar Analytics (pode ser removido se não for necessário)
 const analytics = getAnalytics(app);
 
-// Inicializar Autenticação e Provedores
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
-// Exportar as instâncias para serem usadas em outros arquivos
 export { auth, googleProvider, facebookProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword };

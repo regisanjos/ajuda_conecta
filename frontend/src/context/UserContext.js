@@ -1,20 +1,15 @@
-// src/context/UserContext.js
 import React, { createContext, useState, useEffect } from "react";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
-
-    // Recupera usuários do localStorage ao carregar
     useEffect(() => {
         const storedUsers = localStorage.getItem("users");
         if (storedUsers) {
             setUsers(JSON.parse(storedUsers));
         }
     }, []);
-
-    // Salva usuários no localStorage ao atualizar
     useEffect(() => {
         localStorage.setItem("users", JSON.stringify(users));
     }, [users]);

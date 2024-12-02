@@ -1,6 +1,3 @@
-/* src/styles/ComoDoar.module.css */
-
-
 @keyframes easeInAnimation {
     from {
       opacity: 0;
@@ -368,8 +365,6 @@ h4{
 .footer{
     height: 30px;
 }
-
-/* ANIMAÇÕES */
 
 .comoDoarButton:hover , .acompanharButton:hover{
     background: linear-gradient(to bottom right, #84DA15, #58910e); 

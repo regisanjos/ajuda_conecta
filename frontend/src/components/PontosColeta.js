@@ -1,54 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import styles from "../styles/PontosColeta.module.css";
 import { estadosECidades } from "./brasil.js";
 import { FaPlus, FaEdit, FaTrash, FaCopy } from 'react-icons/fa';
+import { PontosContext } from '../context/PontosContext';
 
 const PontosColeta = () => {
-  // Estados para o modal de cadastro/edição
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [horarioAbertura, setHorarioAbertura] = useState("");
   const [horarioFechamento, setHorarioFechamento] = useState("");
-  const [doacaoAceita, setDoacaoAceita] = useState(""); // Alterado para armazenar uma única doação
+  const [doacaoAceita, setDoacaoAceita] = useState("");
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
   const [editingPonto, setEditingPonto] = useState(null);
-
-  // Novos estados para os campos do formulário
   const [nome, setNome] = useState("");
   const [rua, setRua] = useState("");
   const [numero, setNumero] = useState("");
-
-  // Opções pré-definidas de doações aceitas
   const doacoesOpcoes = [
     "Alimentos não perecíveis",
     "Água potável",
     "Roupas e Calçados",
     "Produtos de Higiene Pessoal",
   ];
-
-  // Estados para a lista de pontos de coleta
-  const [pontosColeta, setPontosColeta] = useState(() => {
-    const storedData = localStorage.getItem("pontosColeta");
-    return storedData ? JSON.parse(storedData) : [];
-  });
-
-  // Estados para o modal de confirmação de exclusão
+  const { pontos, addPonto, updatePonto, removePonto } = useContext(PontosContext);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [pontoParaDeletar, setPontoParaDeletar] = useState(null);
-
-  // Estados para mensagens de sucesso e erro
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  // Atualiza o localStorage sempre que pontosColeta mudar
-  useEffect(() => {
-    localStorage.setItem("pontosColeta", JSON.stringify(pontosColeta));
-  }, [pontosColeta]);
-
-  // Função para abrir o modal de cadastro
   const handleOpenModal = () => {
     setEditingPonto(null);
     setNome("");
@@ -61,8 +41,6 @@ const PontosColeta = () => {
     setCidadeSelecionada("");
     setIsModalOpen(true);
   };
-
-  // Função para fechar o modal de cadastro/edição
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingPonto(null);
@@ -76,31 +54,27 @@ const PontosColeta = () => {
     setCidadeSelecionada("");
     setErrorMessage('');
   };
-
-  // Função para cadastrar um novo ponto de coleta
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     const novoPonto = {
-      id: `PT${pontosColeta.length + 1}`,
+      id: `PT${pontos.length + 1}`,
       nome: nome,
       estado: estadoSelecionado,
       cidade: cidadeSelecionada,
       rua: rua,
       numero: numero,
       horario: `${horarioAbertura} - ${horarioFechamento}`,
-      doacoes: [doacaoAceita], // Armazena a doação selecionada em um array
+      doacoes: [doacaoAceita],
+      ativo: true,
+      data: new Date().toISOString().split('T')[0],
     };
-
-    setPontosColeta([...pontosColeta, novoPonto]);
-
-    // Resetar estados
+  
+    addPonto(novoPonto);
     handleCloseModal();
     setSuccessMessage('Ponto de coleta cadastrado com sucesso!');
     setTimeout(() => setSuccessMessage(''), 5000);
   };
-
-  // Função para atualizar um ponto de coleta existente
   const handleUpdate = (event) => {
     event.preventDefault();
 
@@ -112,22 +86,15 @@ const PontosColeta = () => {
       rua: rua,
       numero: numero,
       horario: `${horarioAbertura} - ${horarioFechamento}`,
-      doacoes: [doacaoAceita], // Armazena a doação selecionada em um array
+      doacoes: [doacaoAceita],
+      ativo: editingPonto.ativo,
     };
 
-    const updatedPontos = pontosColeta.map((ponto) =>
-      ponto.id === editingPonto.id ? pontoAtualizado : ponto
-    );
-
-    setPontosColeta(updatedPontos);
-
-    // Resetar estados
+    updatePonto(editingPonto.id, pontoAtualizado);
     handleCloseModal();
     setSuccessMessage('Ponto de coleta atualizado com sucesso!');
     setTimeout(() => setSuccessMessage(''), 5000);
   };
-
-  // Função para iniciar a edição de um ponto de coleta
   const handleEdit = (ponto) => {
     setEditingPonto(ponto);
     setNome(ponto.nome);
@@ -138,37 +105,26 @@ const PontosColeta = () => {
     const [abertura, fechamento] = ponto.horario.split(" - ");
     setHorarioAbertura(abertura);
     setHorarioFechamento(fechamento);
-    setDoacaoAceita(ponto.doacoes[0] || ""); // Pega a primeira doação do array
+    setDoacaoAceita(ponto.doacoes[0] || "");
     setIsModalOpen(true);
   };
-
-  // Função para abrir o modal de confirmação de exclusão
   const handleDelete = (ponto) => {
     setPontoParaDeletar(ponto);
     setIsConfirmModalOpen(true);
   };
-
-  // Função para confirmar a exclusão
   const confirmDelete = () => {
     if (pontoParaDeletar) {
-      const updatedPontos = pontosColeta.filter(
-        (ponto) => ponto.id !== pontoParaDeletar.id
-      );
-      setPontosColeta(updatedPontos);
+      removePonto(pontoParaDeletar.id);
       setPontoParaDeletar(null);
       setIsConfirmModalOpen(false);
       setSuccessMessage('Ponto de coleta removido com sucesso!');
       setTimeout(() => setSuccessMessage(''), 5000);
     }
   };
-
-  // Função para cancelar a exclusão
   const cancelDelete = () => {
     setPontoParaDeletar(null);
     setIsConfirmModalOpen(false);
   };
-
-  // Função para copiar o ID para a área de transferência
   const handleCopyClick = (id) => {
     navigator.clipboard.writeText(id)
       .then(() => {
@@ -181,11 +137,8 @@ const PontosColeta = () => {
 
   return (
     <div className={styles.doacoesContainer}>
-      {/* Mensagens de Sucesso e Erro */}
       {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
-
-      {/* Cabeçalho e Navegação */}
       <div className={styles.doacoesTopBoardContainer}>
         <nav>
           <div className={styles.navList}>
@@ -197,8 +150,6 @@ const PontosColeta = () => {
         </nav>
         <h1 className={styles.headerTitleDoacoes}>Pontos de Coleta</h1>
       </div>
-
-      {/* Barra de Pesquisa e Botão de Adição */}
       <div className={styles.searchAndAddContainer}>
         <input
           type="text"
@@ -209,8 +160,6 @@ const PontosColeta = () => {
           <FaPlus size={24} color="#fff" />
         </button>
       </div>
-
-      {/* Lista de Pontos de Coleta */}
       <div className={styles.containerDoacoes}>
         <h2 className={styles.doacoesListTitle}>Lista de Pontos de Coleta</h2>
         <div className={styles.doacoesDataHeader}>
@@ -222,7 +171,7 @@ const PontosColeta = () => {
           <p className={styles.doacoesDataColumn}>Doação Aceita</p>
           <p className={styles.doacoesDataColumn}>Ações</p>
         </div>
-        {pontosColeta.map((ponto) => (
+        {pontos.map((ponto) => (
           <div key={ponto.id} className={styles.doacoesDataRow}>
             <p className={styles.doacoesDataColumn}>{ponto.id}</p>
             <p className={styles.doacoesDataColumn}>{ponto.nome}</p>
@@ -244,8 +193,6 @@ const PontosColeta = () => {
           </div>
         ))}
       </div>
-
-      {/* Modal de Cadastro e Edição */}
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
@@ -379,7 +326,6 @@ const PontosColeta = () => {
                   </div>
                 </div>
               </div>
-              {/* Atualização para o select simples */}
               <div className={styles.formGroup}>
                 <label htmlFor="doacaoAceita" className={styles.label}>
                   Doação Aceita
@@ -418,8 +364,6 @@ const PontosColeta = () => {
           </div>
         </div>
       )}
-
-      {/* Modal de Confirmação de Exclusão */}
       {isConfirmModalOpen && pontoParaDeletar && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>

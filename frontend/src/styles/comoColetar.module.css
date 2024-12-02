@@ -139,8 +139,6 @@
     width: 100%;
 }
 
-/* ANIMATIONS */
-
 .finalButtonColeta:hover{
     background: linear-gradient(to bottom right, #609e0f, #3a5f09); 
     color: #fff;

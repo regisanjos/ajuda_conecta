@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from '../styles/Home.module.css';
 
 function Header() {
-    
+    const navigate = useNavigate();
     const location = useLocation();
 
     const allowedRoutes = ['/', '/como-doar', '/contate', '/como-coletar'];

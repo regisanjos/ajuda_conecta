@@ -31,7 +31,6 @@ body {
     margin-top: 6%;
 }
 
-/* Default styling for all tabs */
 .dashboard-tab {
     position: relative;
     width: 261px;
@@ -44,7 +43,6 @@ body {
     transition: background-color 0.3s, border-left 0.3s;
 }
 
-/* Active tab styling */
 .activeTab {
     border-left: 5px solid #84DA15;
     background-color: #ffffff;
@@ -88,7 +86,6 @@ body {
     font-weight: 700;
 }
 
-/* Ajuste para "Perfil" e "Sair" com efeito de clique */
 .dashboard-containerWhitePages,
 .dashboard-containerWhiteLogout {
     display: flex;
@@ -104,9 +101,9 @@ body {
 
 .dashboard-containerWhitePages:active,
 .dashboard-containerWhiteLogout:active {
-    border-left: 10px solid #84DA15; /* Borda verde à esquerda */
-    background-color: #ffffff; /* Fundo branco */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    border-left: 10px solid #84DA15;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-dashboardsContainer {
@@ -117,7 +114,6 @@ body {
     margin-top: 2%;
 }
 
-/* Restante do CSS */
 .dashboard-navItem1, .dashboard-navItem2 {
     display: inline;
     color: #686868;
@@ -157,6 +153,14 @@ body {
     color: #84DA15;
     font-weight: 600;
     background-color: transparent;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-button:hover {
+    background-color: #84DA15;
 }
 
 .dashboard-donationTodayContainer {
@@ -428,7 +432,7 @@ body {
 }
 
 .dashboard-optionLabel {
-    font-size: 14px;
+    font-size: 13.4px;
     color: #686868;
     font-weight: 600;
     margin-left: 3.5%;
@@ -439,4 +443,37 @@ body {
     width: 985px;
     height: 1px;
     background-color: #eeeeee;
+}
+
+.dashboard-entregasList {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 10px 80px;
+}
+
+.dashboard-entregaItem {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 13px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+    align-items: center;
+}
+
+.dashboard-entregaField {
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dashboard-noEntregas {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+}
+
+.dashboard-entregaItem:nth-child(even) {
+    background-color: #f9f9f9;
 }

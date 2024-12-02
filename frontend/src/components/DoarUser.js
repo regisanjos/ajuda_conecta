@@ -50,10 +50,8 @@ function DoarUser() {
   const { catastrofes } = useContext(CatastrofesContext);
   const [activeMarker, setActiveMarker] = useState(null);
 
-  // Carrega os pontos de coleta do localStorage
   const pontosColeta = JSON.parse(localStorage.getItem("pontosColeta")) || [];
 
-  // Função para obter coordenadas da cidade
   const getCityCoordinates = (cityName, stateName) => {
     if (!cidades || !Array.isArray(cidades)) {
       console.error("Cidades data is not available or is not an array.");
@@ -74,21 +72,19 @@ function DoarUser() {
     }
   };
 
-  // Função para determinar a cor com base na gravidade
   const getColorByGravidade = (gravidade) => {
     switch (gravidade) {
       case "Alta":
-        return "#FF4D4F"; // Vermelho
+        return "#FF4D4F";
       case "Moderada":
-        return "#FFA500"; // Laranja
+        return "#FFA500";
       case "Baixa":
-        return "#FFFF00"; // Amarelo
+        return "#FFFF00";
       default:
-        return "#84DA15"; // Verde
+        return "#84DA15";
     }
   };
 
-  // Determina a gravidade mais alta por estado
   const gravidadePorEstado = {};
   catastrofes.forEach((catastrofe) => {
     const estado = catastrofe.estado;
@@ -102,18 +98,16 @@ function DoarUser() {
     }
   });
 
-  // Processa os pontos de coleta com IDs únicos baseados no nome, cidade e estado
   const coletaMarkers = pontosColeta.map((ponto) => {
     const coordinates = getCityCoordinates(ponto.cidade, ponto.estado);
     return {
-      uniqueId: `${ponto.nome}-${ponto.cidade}-${ponto.estado}`, // ID único e estável
+      uniqueId: `${ponto.nome}-${ponto.cidade}-${ponto.estado}`,
       nome: ponto.nome,
       coordinates: coordinates,
       info: ponto,
     };
   });
 
-  // Função para obter a posição central de cada estado para adicionar labels
   const getStateCentroidPosition = (geo) => {
     const centroid = geoCentroid(geo);
     const estadoNome = geo.properties.name;
@@ -122,13 +116,12 @@ function DoarUser() {
   };
 
   return (
-    <div className={styles.container}>
-      <HeaderUser /> {/* Integra o HeaderUser aqui */}
+    <div className={styles.containerDonationUser}>
+      <HeaderUser />
       <div className={styles.content}>
         <h1 className={styles.title}>
           Mapa de Catástrofes e Pontos de Coleta
         </h1>
-        {/* Contêiner para o Mapa */}
         <div className={styles.mapContainer}>
           <ComposableMap
             projection="geoMercator"
@@ -165,7 +158,6 @@ function DoarUser() {
                             pressed: { fill: "#E42", outline: "none" },
                           }}
                         />
-                        {/* Renderiza a sigla do estado */}
                         {centroidData && (
                           <Marker coordinates={centroidData.coordinates}>
                             <text
@@ -183,17 +175,16 @@ function DoarUser() {
                 }
               </Geographies>
 
-              {/* Renderiza os marcadores de pontos de coleta */}
               {coletaMarkers.map(
                 (marker) =>
                   marker.coordinates && (
                     <Marker
-                      key={`ponto-${marker.uniqueId}`} // Garante que a chave seja única
+                      key={`ponto-${marker.uniqueId}`}
                       coordinates={marker.coordinates}
                     >
                       <circle
-                        r={5} // Tamanho do marcador
-                        fill="#0000FF" // Azul
+                        r={5}
+                        fill="#0000FF"
                         stroke="#fff"
                         strokeWidth={1}
                         onMouseEnter={() => setActiveMarker(marker.uniqueId)}
@@ -205,12 +196,11 @@ function DoarUser() {
                         role="button"
                         tabIndex={0}
                       />
-                      {/* Renderiza o tooltip personalizado */}
                       {activeMarker === marker.uniqueId && (
                         <g>
                           <foreignObject
-                            x={10} // Ajuste para posicionar o tooltip à direita do marcador
-                            y={-50} // Ajuste para alinhar verticalmente
+                            x={10}
+                            y={-50}
                             width={200}
                             height={150}
                             pointerEvents="none"

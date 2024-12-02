@@ -1,10 +1,8 @@
-// src/pages/Doacoes.js
-
 import React, { useState, useContext } from "react";
-import InputMask from 'react-input-mask'; // Importação do InputMask
-import { DoacoesContext } from "../context/DoacoesContext"; // Verifique se o caminho está correto
+import InputMask from 'react-input-mask';
+import { DoacoesContext } from "../context/DoacoesContext";
 import styles from "../styles/Doacoes.module.css";
-import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa'; // Importação dos ícones
+import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 
 const Doacoes = () => {
   const {
@@ -13,8 +11,6 @@ const Doacoes = () => {
     removerDoacao,
     atualizarDoacao,
   } = useContext(DoacoesContext);
-
-  // Estados para o modal de cadastro/edição
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDoacao, setEditingDoacao] = useState(null);
   const [novaDoacao, setNovaDoacao] = useState({
@@ -27,16 +23,10 @@ const Doacoes = () => {
     destinatario: "",
     status: "",
   });
-
-  // Estados para o modal de confirmação de exclusão
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [doacaoParaDeletar, setDoacaoParaDeletar] = useState(null);
-
-  // Estados para mensagens de sucesso e erro
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  // Função para abrir o modal de cadastro
   const handleOpenModal = () => {
     setEditingDoacao(null);
     setNovaDoacao({
@@ -51,8 +41,6 @@ const Doacoes = () => {
     });
     setIsModalOpen(true);
   };
-
-  // Função para fechar o modal de cadastro/edição
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingDoacao(null);
@@ -68,8 +56,6 @@ const Doacoes = () => {
     });
     setErrorMessage('');
   };
-
-  // Função para lidar com as mudanças nos campos do formulário
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNovaDoacao((prev) => ({
@@ -78,51 +64,40 @@ const Doacoes = () => {
     }));
   };
 
-  // Função para cadastrar uma nova doação
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Gerar um ID único (pode usar uuid ou outra lógica)
     const idGerado = Date.now().toString();
     adicionarDoacao({ ...novaDoacao, id: idGerado });
     setSuccessMessage('Doação cadastrada com sucesso!');
     handleCloseModal();
-    setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+    setTimeout(() => setSuccessMessage(''), 5000);
   };
-
-  // Função para atualizar uma doação existente
   const handleUpdate = (event) => {
     event.preventDefault();
     atualizarDoacao(editingDoacao.id, novaDoacao);
     setSuccessMessage('Doação atualizada com sucesso!');
     handleCloseModal();
-    setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+    setTimeout(() => setSuccessMessage(''), 5000);
   };
-
-  // Função para abrir o modal de edição com os dados da doação selecionada
   const handleEdit = (doacao) => {
     setEditingDoacao(doacao);
     setNovaDoacao(doacao);
     setIsModalOpen(true);
   };
-
-  // Função para abrir o modal de confirmação de exclusão
   const handleDelete = (doacao) => {
     setDoacaoParaDeletar(doacao);
     setIsConfirmModalOpen(true);
   };
 
-  // Função para confirmar a exclusão
   const confirmDelete = () => {
     if (doacaoParaDeletar) {
       removerDoacao(doacaoParaDeletar.id);
       setSuccessMessage('Doação removida com sucesso!');
       setDoacaoParaDeletar(null);
       setIsConfirmModalOpen(false);
-      setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+      setTimeout(() => setSuccessMessage(''), 5000);
     }
   };
-
-  // Função para cancelar a exclusão
   const cancelDelete = () => {
     setDoacaoParaDeletar(null);
     setIsConfirmModalOpen(false);
@@ -130,7 +105,6 @@ const Doacoes = () => {
 
   return (
     <div className={styles.doacoesContainer}>
-      {/* Mensagens de Sucesso e Erro */}
       {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 
@@ -155,8 +129,6 @@ const Doacoes = () => {
           <FaPlus size={24} color="#fff" />
         </button>
       </div>
-
-      {/* Lista de Doações */}
       <div className={styles.containerDoacoes}>
         <h2 className={styles.doacoesListTitle}>Lista de Doações</h2>
         <div className={styles.doacoesDataHeader}>
@@ -189,8 +161,6 @@ const Doacoes = () => {
           </div>
         ))}
       </div>
-
-      {/* Modal de Cadastro e Edição */}
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
@@ -332,8 +302,6 @@ const Doacoes = () => {
           </div>
         </div>
       )}
-
-      {/* Modal de Confirmação de Exclusão */}
       {isConfirmModalOpen && doacaoParaDeletar && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>

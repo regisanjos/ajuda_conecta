@@ -1,12 +1,9 @@
-// src/components/DetalhesEntrega.js
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { EntregasContext } from '../context/EntregasContext';
 import styles from '../styles/DetalhesEntrega.module.css';
 import { MapContainer, TileLayer, Marker, Polyline, Popup } from 'react-leaflet';
 import L from 'leaflet';
-
-// Fix para os ícones do Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -25,8 +22,6 @@ function DetalhesEntrega() {
   const [error, setError] = useState(false);
   const [coordsDoador, setCoordsDoador] = useState(null);
   const [coordsDestinatario, setCoordsDestinatario] = useState(null);
-
-  // Função para buscar dados do CEP usando a API ViaCEP
   const fetchCEPData = async (cep) => {
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -65,7 +60,6 @@ function DetalhesEntrega() {
     obterEntrega();
   }, [id, entregas]);
 
-  // Função para converter CEP em coordenadas geográficas usando Nominatim
   useEffect(() => {
     const obterCoordenadas = async () => {
       if (doador && destinatario) {

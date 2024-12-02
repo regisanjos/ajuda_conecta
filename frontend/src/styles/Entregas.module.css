@@ -1,6 +1,3 @@
-/* src/styles/Entregas.module.css */
-
-/* Aplicar box-sizing globalmente */
 *,
 *::before,
 *::after {
@@ -262,7 +259,6 @@
     border-color: #84DA15;
 }
 
-/* Estilo inline para CPF e Data */
 .entregasInlineGroup {
     display: flex;
     flex-wrap: wrap;
@@ -311,7 +307,6 @@
     box-shadow: 0 0 5px rgba(132, 218, 21, 0.5);
 }
 
-/* Estilização aprimorada para o campo "Status" */
 .entregasStatusSelect {
     width: 100%;
     padding: 10px;
@@ -334,7 +329,6 @@
     box-shadow: 0 0 5px rgba(116, 204, 68, 0.5);
 }
 
-/* Modal Buttons */
 .entregasModalButtons {
     display: flex;
     justify-content: flex-end;
@@ -373,7 +367,6 @@
     background-color: #d32f2f;
 }
 
-/* Mensagens */
 .successMessage {
     background-color: #4CAF50;
     color: white;
@@ -405,7 +398,6 @@
     }
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .entregasTopBoardContainer {
         flex-direction: column;
@@ -439,7 +431,7 @@
         flex: 1 1 100%;
         margin-right: 0;
         margin-left: 0;
-        margin-bottom: 15px; /* Espaçamento entre os campos na vertical */
+        margin-bottom: 15px;
     }
 
     .entregasFormGroupInline:last-child {

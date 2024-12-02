@@ -1,5 +1,3 @@
-// src/components/AcompanharUser.js
-
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EntregasContext } from '../context/EntregasContext';

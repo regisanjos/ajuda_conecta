@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -20,6 +19,7 @@ import { DoacoesProvider } from './context/DoacoesContext';
 import { EntregasProvider } from './context/EntregasContext';
 import { CatastrofesProvider } from './context/CatastrofesContext';
 import { UserProvider } from './context/UserContext';
+import { PontosProvider } from './context/PontosContext';
 
 function App() {
     return (
@@ -27,25 +27,27 @@ function App() {
             <EntregasProvider>
                 <CatastrofesProvider>
                     <UserProvider>
-                        <Router>
-                            <Header />
-                            <Routes>
-                                <Route path="/" element={<Home />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/signup" element={<Signup />} />
-                                <Route path="/pontos-coleta" element={<PontosColeta />} />
-                                <Route path="/dashboard" element={<Dashboard />} />
-                                <Route path="/como-doar" element={<ComoDoar />} />
-                                <Route path="/como-coletar" element={<ComoColetar />} />
-                                <Route path="/contate" element={<Contate />} />
-                                <Route path="/doacoes" element={<Doacoes />} />
-                                <Route path="/doar-user" element={<DoarUser />} />
-                                <Route path="/entregas" element={<Entregas />} />
-                                <Route path="/acompanhar-user" element={<AcompanharUser />} />
-                                <Route path="/acompanhar/:id" element={<DetalhesEntrega />} />
-                                <Route path="/catastrofes" element={<Catastrofes />} />
-                            </Routes>
-                        </Router>
+                        <PontosProvider>
+                            <Router>
+                                <Header />
+                                <Routes>
+                                    <Route path="/" element={<Home />} />
+                                    <Route path="/login" element={<Login />} />
+                                    <Route path="/signup" element={<Signup />} />
+                                    <Route path="/pontos-coleta" element={<PontosColeta />} />
+                                    <Route path="/dashboard" element={<Dashboard />} />
+                                    <Route path="/como-doar" element={<ComoDoar />} />
+                                    <Route path="/como-coletar" element={<ComoColetar />} />
+                                    <Route path="/contate" element={<Contate />} />
+                                    <Route path="/doacoes" element={<Doacoes />} />
+                                    <Route path="/doar-user" element={<DoarUser />} />
+                                    <Route path="/entregas" element={<Entregas />} />
+                                    <Route path="/acompanhar-user" element={<AcompanharUser />} />
+                                    <Route path="/acompanhar/:id" element={<DetalhesEntrega />} />
+                                    <Route path="/catastrofes" element={<Catastrofes />} />
+                                </Routes>
+                            </Router>
+                        </PontosProvider>
                     </UserProvider>
                 </CatastrofesProvider>
             </EntregasProvider>

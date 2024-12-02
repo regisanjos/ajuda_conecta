@@ -1,11 +1,9 @@
-// src/pages/Catastrofes.js
-
 import React, { useState, useContext } from "react";
 import InputMask from 'react-input-mask';
 import { CatastrofesContext } from "../context/CatastrofesContext";
 import styles from "../styles/Catastrofes.module.css";
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
-import { estadosECidades } from "../components/brasil.js"; // Certifique-se de que o caminho está correto
+import { estadosECidades } from "../components/brasil.js";
 
 const Catastrofes = () => {
   const {
@@ -15,7 +13,6 @@ const Catastrofes = () => {
     atualizarCatastrofe,
   } = useContext(CatastrofesContext);
 
-  // Estados para o modal de cadastro/edição
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCatastrofe, setEditingCatastrofe] = useState(null);
   const [novaCatastrofe, setNovaCatastrofe] = useState({
@@ -29,15 +26,12 @@ const Catastrofes = () => {
     status: "",
   });
 
-  // Estados para o modal de confirmação de exclusão
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [catastrofeParaDeletar, setCatastrofeParaDeletar] = useState(null);
 
-  // Estados para mensagens de sucesso e erro
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Função para abrir o modal de cadastro
   const handleOpenModal = () => {
     setEditingCatastrofe(null);
     setNovaCatastrofe({
@@ -56,7 +50,6 @@ const Catastrofes = () => {
     setErrorMessage('');
   };
 
-  // Função para fechar o modal de cadastro/edição
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setEditingCatastrofe(null);
@@ -75,7 +68,6 @@ const Catastrofes = () => {
     setErrorMessage('');
   };
 
-  // Função para lidar com as mudanças nos campos do formulário
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNovaCatastrofe((prev) => ({
@@ -84,27 +76,23 @@ const Catastrofes = () => {
     }));
   };
 
-  // Função para cadastrar uma nova catástrofe
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Gerar um ID único (pode usar uuid ou outra lógica)
     const idGerado = Date.now().toString();
     adicionarCatastrofe({ ...novaCatastrofe, id: idGerado });
     setSuccessMessage('Catástrofe cadastrada com sucesso!');
     handleCloseModal();
-    setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+    setTimeout(() => setSuccessMessage(''), 5000);
   };
 
-  // Função para atualizar uma catástrofe existente
   const handleUpdate = (event) => {
     event.preventDefault();
     atualizarCatastrofe(editingCatastrofe.id, novaCatastrofe);
     setSuccessMessage('Catástrofe atualizada com sucesso!');
     handleCloseModal();
-    setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+    setTimeout(() => setSuccessMessage(''), 5000);
   };
 
-  // Função para abrir o modal de edição com os dados da catástrofe selecionada
   const handleEdit = (catastrofe) => {
     setEditingCatastrofe(catastrofe);
     setNovaCatastrofe(catastrofe);
@@ -113,36 +101,31 @@ const Catastrofes = () => {
     setIsModalOpen(true);
   };
 
-  // Função para abrir o modal de confirmação de exclusão
   const handleDelete = (catastrofe) => {
     setCatastrofeParaDeletar(catastrofe);
     setIsConfirmModalOpen(true);
   };
 
-  // Função para confirmar a exclusão
   const confirmDelete = () => {
     if (catastrofeParaDeletar) {
       removerCatastrofe(catastrofeParaDeletar.id);
       setSuccessMessage('Catástrofe removida com sucesso!');
       setCatastrofeParaDeletar(null);
       setIsConfirmModalOpen(false);
-      setTimeout(() => setSuccessMessage(''), 5000); // Limpa a mensagem após 5 segundos
+      setTimeout(() => setSuccessMessage(''), 5000);
     }
   };
 
-  // Função para cancelar a exclusão
   const cancelDelete = () => {
     setCatastrofeParaDeletar(null);
     setIsConfirmModalOpen(false);
   };
 
-  // Estados para seleção de estado e cidade
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const [cidadeSelecionada, setCidadeSelecionada] = useState("");
 
   return (
     <div className={styles.doacoesContainer}>
-      {/* Mensagens de Sucesso e Erro */}
       {successMessage && <div className={styles.successMessage}>{successMessage}</div>}
       {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
 
@@ -167,8 +150,6 @@ const Catastrofes = () => {
           <FaPlus size={24} color="#fff" />
         </button>
       </div>
-
-      {/* Lista de Catástrofes */}
       <div className={styles.containerDoacoes}>
         <h2 className={styles.doacoesListTitle}>Lista de Catástrofes</h2>
         <div className={styles.doacoesDataHeader}>
@@ -203,8 +184,6 @@ const Catastrofes = () => {
           </div>
         ))}
       </div>
-
-      {/* Modal de Cadastro e Edição */}
       {isModalOpen && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
@@ -243,7 +222,7 @@ const Catastrofes = () => {
                     onChange={(e) => {
                       const novoEstado = e.target.value;
                       setEstadoSelecionado(novoEstado);
-                      setCidadeSelecionada(""); // Reseta a cidade ao mudar o estado
+                      setCidadeSelecionada("");
                       setNovaCatastrofe((prev) => ({
                         ...prev,
                         estado: novoEstado,
@@ -377,8 +356,6 @@ const Catastrofes = () => {
           </div>
         </div>
       )}
-
-      {/* Modal de Confirmação de Exclusão */}
       {isConfirmModalOpen && catastrofeParaDeletar && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
